@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="clase05-jdbc-con-maven/src/main/java"/>
+	<classpathentry kind="src" path="clase05-jdbc-sin-maven/src"/>
+	<classpathentry kind="lib" path="clase05-jdbc-sin-maven/lib/mysql-connector-j-8.0.33.jar"/>
+	<classpathentry kind="output" path="clase05-jdbc-con-maven/target/classes"/>
+</classpath>
