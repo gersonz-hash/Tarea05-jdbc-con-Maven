@@ -25,13 +25,13 @@ import java.util.Optional;
  */
 public class EstudianteDAO {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/prog2_db?useSSL=false&serverTimezone=UTC";
+    private static final String URL ="jdbc:mysql://localhost:3306/tarea5_db?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "Lessen08";
 
     // 1. CREATE: inserta un estudiante nuevo y retorna el id que le asigno MySQL.
     public int crear(Estudiante estudiante) throws SQLException {
-        String sql = "INSERT INTO estudiantes (nombre, carnet, edad, activo, Tipo) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO estudiantes (nombre, carnet, edad, activo, tipo) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement statement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -59,7 +59,7 @@ public class EstudianteDAO {
 
     // 2. READ (todos): retorna la lista completa de estudiantes.
     public List<Estudiante> listarTodos() throws SQLException {
-        String sql = "SELECT id, nombre, carnet FROM estudiantes ORDER BY id";
+        String sql = "SELECT id, nombre, carnet, edad, activo, tipo FROM estudiantes ORDER BY id";
         List<Estudiante> estudiantes = new ArrayList<>();
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
@@ -77,7 +77,7 @@ public class EstudianteDAO {
     // null "silencioso" cuando no se encuentra nada; obliga a quien llama este
     // metodo a manejar explicitamente el caso "no existe".
     public Optional<Estudiante> buscarPorCarnet(String carnet) throws SQLException {
-        String sql = "SELECT id, nombre, carnet FROM estudiantes WHERE carnet = ?";
+        String sql = "SELECT id, nombre, carnet, edad, activo, tipo FROM estudiantes WHERE carnet = ?";
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement statement = conexion.prepareStatement(sql)) {
@@ -130,7 +130,10 @@ public class EstudianteDAO {
         int id = resultado.getInt("id");
         String nombre = resultado.getString("nombre");
         String carnet = resultado.getString("carnet");
-        int edad=resultado.getString("edad");
-        return new Estudiante(id, nombre, carnet, edad);
+        int edad=resultado.getInt("edad");
+        int activo=resultado.getInt("activo");
+        String tipo =resultado.getString("Tipo");
+        
+        return new Estudiante(id, nombre, carnet, edad, activo, tipo);
     }
 }
