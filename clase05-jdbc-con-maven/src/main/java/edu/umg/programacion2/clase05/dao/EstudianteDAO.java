@@ -27,17 +27,22 @@ public class EstudianteDAO {
 
     private static final String URL = "jdbc:mysql://localhost:3306/prog2_db?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "tu_password_aqui";
+    private static final String PASSWORD = "Lessen08";
 
     // 1. CREATE: inserta un estudiante nuevo y retorna el id que le asigno MySQL.
     public int crear(Estudiante estudiante) throws SQLException {
-        String sql = "INSERT INTO estudiantes (nombre, carnet) VALUES (?, ?)";
+        String sql = "INSERT INTO estudiantes (nombre, carnet, edad, activo, Tipo) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
              PreparedStatement statement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setString(1, estudiante.getNombre());
             statement.setString(2, estudiante.getCarnet());
+            statement.setInt(3, estudiante.getEdad());
+            statement.setInt(4, estudiante.getActivo());
+            statement.setString(5, estudiante.getTipo());
+          
+            
             statement.executeUpdate();
 
             // IMPORTANTE: RETURN_GENERATED_KEYS + getGeneratedKeys() es como se
@@ -125,6 +130,7 @@ public class EstudianteDAO {
         int id = resultado.getInt("id");
         String nombre = resultado.getString("nombre");
         String carnet = resultado.getString("carnet");
-        return new Estudiante(id, nombre, carnet);
+        int edad=resultado.getString("edad");
+        return new Estudiante(id, nombre, carnet, edad);
     }
 }

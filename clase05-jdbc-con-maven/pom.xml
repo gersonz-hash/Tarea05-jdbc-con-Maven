@@ -18,11 +18,12 @@
          con clase05-jdbc-sin-maven, donde ese mismo .jar hay que descargarlo y
          referenciarlo a mano. -->
     <dependency>
-      <groupId>com.mysql</groupId>
-      <artifactId>mysql-connector-j</artifactId>
-      <version>8.0.33</version>
-    </dependency>
-  </dependencies>
+    <groupId>org.mariadb.jdbc</groupId>
+    <artifactId>mariadb-java-client</artifactId>
+    <version>3.5.4</version>
+</dependency>
+
+</dependencies>
 
   <build>
     <plugins>

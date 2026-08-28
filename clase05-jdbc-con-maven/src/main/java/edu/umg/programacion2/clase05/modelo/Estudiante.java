@@ -14,20 +14,50 @@ public class Estudiante {
     private int id;
     private String nombre;
     private String carnet;
+    private int edad;
+    private int activo;
+    private String tipo;
+    
+    public Estudiante(int id, String nombre, String carnet, int edad, int activo, String tipo) {
+		this.id = id;
+		this.nombre = nombre;
+		this.carnet = carnet;
+		this.edad = edad;
+		this.activo = activo;
+		this.tipo = tipo;
+	}
 
-    public Estudiante(int id, String nombre, String carnet) {
-        this.id = id;
-        this.nombre = nombre;
-        this.carnet = carnet;
-    }
-
-    // Constructor de conveniencia para cuando todavia no existe en la base de
+	// Constructor de conveniencia para cuando todavia no existe en la base de
     // datos (por eso id = 0: MySQL le va a asignar el id real al insertarlo).
-    public Estudiante(String nombre, String carnet) {
-        this(0, nombre, carnet);
+    public Estudiante(String nombre, String carnet, int edad, int activo, String tipo) {
+        this(0, nombre, carnet, edad, activo, tipo);
     }
 
-    public int getId() {
+    public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public int getActivo() {
+		return activo;
+	}
+
+	public void setActivo(int activo) {
+		this.activo = activo;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getId() {
         return id;
     }
 

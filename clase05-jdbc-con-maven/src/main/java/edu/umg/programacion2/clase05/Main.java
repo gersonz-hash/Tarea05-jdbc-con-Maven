@@ -92,9 +92,16 @@ public class Main {
         String nombre = teclado.nextLine();
         System.out.print("Carnet: ");
         String carnet = teclado.nextLine();
+        System.out.print("Edad: ");
+        int edad=teclado.nextInt();
+        System.out.print("Activo: ");
+        int activo=teclado.nextInt();
+        System.out.print("Tipo: ");
+        String tipo =teclado.nextLine();
+        
 
         try {
-            int id = estudianteDAO.crear(new Estudiante(nombre, carnet));
+            int id = estudianteDAO.crear(new Estudiante(nombre, carnet, edad, activo, tipo));
             System.out.println("Estudiante creado con id " + id);
         } catch (SQLException e) {
             // Cuidado: nunca dejen un catch vacio. Como minimo, impriman el
