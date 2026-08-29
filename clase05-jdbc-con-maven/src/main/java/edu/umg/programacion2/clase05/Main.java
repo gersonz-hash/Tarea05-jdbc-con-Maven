@@ -63,7 +63,7 @@ public class Main {
     }
 
     private static void mostrarMenu() {
-        System.out.println("=== CRUD de Estudiantes (MySQL) ===");
+        System.out.println("=== CRUD de Estudiantes (MariaDB) ===");
         System.out.println("1. Agregar estudiante");
         System.out.println("2. Listar todos los estudiantes");
         System.out.println("3. Buscar estudiante por carnet");
@@ -96,6 +96,9 @@ public class Main {
         int edad=teclado.nextInt();
         System.out.print("Activo: ");
         int activo=teclado.nextInt();
+        
+        teclado.nextLine(); // Limpia el Enter pendiente
+        
         System.out.print("Tipo: ");
         String tipo =teclado.nextLine();
         

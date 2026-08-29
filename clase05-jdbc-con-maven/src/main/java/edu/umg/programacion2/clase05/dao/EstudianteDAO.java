@@ -25,7 +25,8 @@ import java.util.Optional;
  */
 public class EstudianteDAO {
 
-    private static final String URL ="jdbc:mysql://localhost:3306/tarea5_db?useSSL=false&serverTimezone=UTC";
+    private static final String URL ="jdbc:mariadb://localhost:3306/tarea5_db";
+    //private static final String URL ="jdbc:mysql://localhost:3306/tarea5_db?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "Lessen08";
 
@@ -40,6 +41,7 @@ public class EstudianteDAO {
             statement.setString(2, estudiante.getCarnet());
             statement.setInt(3, estudiante.getEdad());
             statement.setInt(4, estudiante.getActivo());
+            
             statement.setString(5, estudiante.getTipo());
           
             
@@ -103,6 +105,7 @@ public class EstudianteDAO {
 
             statement.setString(1, nuevoNombre);
             statement.setString(2, carnet);
+            
 
             int filasAfectadas = statement.executeUpdate();
             return filasAfectadas > 0;
